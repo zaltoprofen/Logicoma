@@ -1,0 +1,14 @@
+{
+  "debug": false,
+  "handlers": [
+    {"name": "usagi", "type": "json", "file_path": "definitions/usagi.json"},
+    {"name": "logicoma", "type": "json", "file_path": "definitions/logicoma.json"},
+    {
+      "name": "reverse",
+      "type": "external",
+      "module": "plugins.reverser",
+      "class": "ReverserHandler",
+      "cons_kwargs": {"pattern": "^reverse:"}
+    }
+  ]
+}
