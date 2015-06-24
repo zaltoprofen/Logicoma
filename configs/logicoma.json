@@ -10,6 +10,7 @@
       "module": "plugins.reverser",
       "class": "ReverserHandler",
       "cons_kwargs": {"pattern": "^reverse:"}
-    }
+    },
+    {"name": "zinc", "type": "external", "module": "plugins.compound", "class": "ZincHandler"}
   ]
 }
