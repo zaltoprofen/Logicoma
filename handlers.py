@@ -10,6 +10,12 @@ def load_from_config(section):
     if section.get('type') == 'json':
         filepath = section['file_path']
         return JSONDefinedHandler(filepath)
+    elif section.get('type') == 'external':
+        mname = section['module']
+        cname = section['class']
+        cargs = section.get('cons_args', [])
+        ckwargs = section.get('cons_kwargs', {})
+        return ExternalHandler(mname, cname, cargs, ckwargs)
     raise ValueError()
 
 class DictDefinedHandler(object):
@@ -38,3 +44,14 @@ class JSONDefinedHandler(object):
 
     def handle(self, text):
         return self.delegate.handle(text)
+
+class ExternalHandler(object):
+    def __init__(self, module_name, class_name, cons_args=[], cons_kwargs={}):
+        import importlib
+        module = importlib.import_module(module_name)
+        klazz = module.__getattribute__(class_name)
+        self.delegate = klazz(*cons_args, **cons_kwargs)
+
+    def handle(self, text):
+        return self.delegate.handle(text)
+        

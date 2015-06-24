@@ -1,0 +1,16 @@
+{
+  "token": "H9UiMIp2fagHF1l49veIwOJa",
+  "debug": false,
+  "handlers": [
+    {"name": "lay", "type": "json", "file_path": "definitions/lay.json"},
+    {"name": "usagi", "type": "json", "file_path": "definitions/usagi.json"},
+    {"name": "logicoma", "type": "json", "file_path": "definitions/logicoma.json"},
+    {
+      "name": "reverse",
+      "type": "external",
+      "module": "plugins.reverser",
+      "class": "ReverserHandler",
+      "cons_kwargs": {"pattern": "^reverse:"}
+    }
+  ]
+}

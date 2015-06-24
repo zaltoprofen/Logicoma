@@ -1,0 +1,11 @@
+{
+  "pattern": "(:logicoma:|ロジコマ！)",
+  "default": {"icon_emoji": ":logicoma:", "username": "Logicoma"},
+  "candidates": [
+    {"text": "ハローぅ！"},
+    {"text": "命令は了解されました！"},
+    {"text": "了解されましたー"},
+    {"text": "アイアイサ〜"},
+    {"text": "どうも、初めまして、私は自動追走型兵站システム、ロジスティックス・コンベイヤー・マシンの1つです。"}
+  ]
+}

@@ -11,21 +11,18 @@ logger = logging.getLogger(__name__)
 
 class Logicoma(object):
 
-    def __init__(self, config_path='logicoma.ini'):
+    def __init__(self, config_path='logicoma.json'):
         self.app = Flask('Logicoma')
         self.app.route('/', methods=['post'])(self.hook)
         self.app.route('/', methods=['get'])(lambda:'hello world')
         self.load_config(config_path)
 
     def load_config(self, config_path):
-        conf = configparser.ConfigParser()
-        conf.read(config_path)
-        c = conf['logicoma']
-        self.token = c['token']
-        self.debug = c.getboolean('debug')
-        handler_names = map(lambda s: s.strip(), c['handlers'].split(','))
-        sections = map(lambda name: conf['handler_%s' % name], handler_names)
-        self.handlers = [handlers.load_from_config(s) for s in sections]
+        with open(config_path) as fp:
+            conf = json.load(fp)
+        self.token = conf['token']
+        self.debug = conf.get('debug', False)
+        self.handlers = [handlers.load_from_config(s) for s in conf['handlers']]
 
     def run(self, *args, **kwargs):
         return self.app.run(*args, **kwargs)
