@@ -3,7 +3,7 @@ from configparser import ConfigParser
 import logging
 import logging.config
 
-logging.config.fileConfig('logger.ini')
+logging.config.fileConfig('configs/logger.ini')
 logger = logging.getLogger(__name__)
 
 conf = ConfigParser()

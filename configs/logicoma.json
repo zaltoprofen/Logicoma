@@ -1,5 +1,4 @@
 {
-  "token": "H9UiMIp2fagHF1l49veIwOJa",
   "debug": false,
   "handlers": [
     {"name": "lay", "type": "json", "file_path": "definitions/lay.json"},
