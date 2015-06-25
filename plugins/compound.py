@@ -8,7 +8,7 @@ log = logging.getLogger(__name__)
 
 class ZincHandler(object):
     def __init__(self):
-        self.pattern = re.compile('^compound:([a-zA-Z0-9]+)$')
+        self.pattern = re.compile('^compound:([a-zA-Z0-9_]+)$')
 
     def handle(self, text):
         try:

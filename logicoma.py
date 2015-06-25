@@ -11,7 +11,6 @@ class Logicoma(object):
     def __init__(self, config_path='configs/logicoma.json', other_opts={}):
         self.app = Flask('Logicoma')
         self.app.route('/', methods=['post'])(self.hook)
-        self.app.route('/', methods=['get'])(lambda:'hello world')
         self.other_opts = other_opts
         self.load_config(config_path)
 

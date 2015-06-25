@@ -1,5 +1,5 @@
 {
-  "pattern": ":usagi:",
+  "pattern": ":(usagi|rabbit2?):",
   "default": {"icon_emoji": ":logicoma:", "username": "Logicoma"},
   "candidates": [
     {"text": "(\\_(\\ \n(\uff61\u2022 .\u2022)\no_(\u201c)(\u201c)"}
