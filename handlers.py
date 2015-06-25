@@ -27,7 +27,7 @@ class DictDefinedHandler(object):
 
     def handle(self, text):
         log.debug('handling: %s', text)
-        if self.pattern.match(text) is None:
+        if self.pattern.search(text) is None:
             return None
         log.debug('match: %s', text)
         res = self.default.copy()
