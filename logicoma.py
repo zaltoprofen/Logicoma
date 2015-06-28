@@ -33,7 +33,7 @@ class Logicoma(object):
             if response is not None:
                 candidates.append(response)
         if len(candidates) > 0:
-            response = random.sample(candidates, 1)
+            response = random.sample(candidates, 1)[0]
             logger.info('responding: %s', response)
             response_json = json.dumps(response)
             return (response_json, 200, {'Content-Type': 'application/json'})
