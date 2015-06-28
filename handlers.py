@@ -33,7 +33,7 @@ class DictDefinedHandler(object):
         res = self.default.copy()
         if len(self.candidates) > 0:
             res.update(random.sample(self.candidates, 1)[0])
-        log.info('responding: %s', res)
+        log.debug('responding: %s', res)
         return res
 
 class JSONDefinedHandler(object):

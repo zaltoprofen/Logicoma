@@ -3,6 +3,7 @@ from flask import Flask, Response, request, make_response
 import json
 import logging
 import handlers
+import random
 
 logger = logging.getLogger(__name__)
 
@@ -26,12 +27,18 @@ class Logicoma(object):
         return self.app.run(*args, **kwargs)
 
     def dispatch(self, text):
+        candidates = []
         for h in self.handlers:
             response = h.handle(text)
             if response is not None:
-                response_json = json.dumps(response)
-                return (response_json, 200, {'Content-Type': 'application/json'})
-        return ('', 200, {})
+                candidates.append(response)
+        if len(candidates) > 0:
+            response = random.sample(candidates, 1)
+            logger.info('responding: %s', response)
+            response_json = json.dumps(response)
+            return (response_json, 200, {'Content-Type': 'application/json'})
+        else:
+            return ('', 200, {})
 
     def hook(self):
         try:
