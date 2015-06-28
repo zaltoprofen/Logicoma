@@ -15,7 +15,7 @@ def main():
     parser.add_option('--debug', action='store_true')
     opts, args = parser.parse_args()
 
-    logging.config.fileConfig(opts.logging_conf)
+    logging.config.fileConfig(opts.logging_conf, disable_existing_loggers=False)
 
     config = configparser.ConfigParser()
     config.read(opts.flask_conf)
